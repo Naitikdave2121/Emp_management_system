@@ -1,0 +1,60 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block page_title %}
+    Leave Apply by Staffs
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Leave Apply by Staffs</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="table-responsive">
+                            <table class="table" border="1px">
+                                <thead>
+                                <tr>
+                                  <th>id</th>
+                                  <th>Name</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for i in l %}
+                                <tr>
+                                     <td>{{i.0}}</td>
+                                     <td>{{i.1}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+
+
+  {% endblock main_content %}
+
+  {% comment %} Custom JS to Identify the Reply and Post Reply {% endcomment %}
+
+  {% block custom_js %}
+
+  {% endblock custom_js %}

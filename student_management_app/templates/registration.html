@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+    <body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href=""><b>Employee </b>Management System</a>
+  </div>
+  <!-- /.login-logo -->
+  {{msg}}
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Admin Registration</p>
+
+      <form action="{% url 'rdata' %}" method="POST">
+      {% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="FirstName" name="fname">
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="LastName" name="lname">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    
+                  </div>
+                </div>
+              </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="username" name="user">
+          <div class="input-group-append">
+            <div class="input-group-text">
+        
+            </div>
+          </div>
+        </div>
+        
+        <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Email" name="email">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+              
+                  </div>
+                </div>
+              </div>
+              
+        <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Password" name="pass">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+              
+                  </div>
+                </div>
+              </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+          </div>
+
+          {% comment %} <div class="col-12 text-center">
+            <a href="{% url 'password_reset' %}">Reset Password</a>
+          </div>  {% endcomment %}
+
+          {% comment %} Display Messages {% endcomment %}
+          {% if messages %}
+          <div class="col-12">
+            {% for message in messages %}
+              {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- /.col -->
+        </div>
+      </form>
+  </div>
+</div>
+<!-- /.login-box -->
+{% endblock %}

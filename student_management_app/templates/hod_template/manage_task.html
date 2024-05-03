@@ -1,0 +1,94 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block page_title %}
+
+<div class="ml-8">
+    <a href="{% url 'all_task' %}"><button type="button" class="btn btn-info btn-lg">Pending_Task</button></a>
+    <a href="{% url 'Completed_Task' %}"><button type="button" id="show_completed" class="btn btn-info btn-lg">Completed_Task</button></a>
+</div>
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+<section class="content mt-5">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Task</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="table-responsive">
+                            <table class="table" border="1px">
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Task Name</th>
+                                    <th>Description</th>
+                                    <th>StartDate</th>
+                                    <th>EndDate</th>
+                                    <th>Status</th>
+                                    
+                                </tr>
+                                
+                                </thead>
+
+                                <tbody>
+                                
+                                 {% for i in d %}
+                                <tr class="Pending">
+                                    <td>{{i.Emp_id.Emp_Name}}</td>
+                                    <td>{{i.Task_Name}}</td>
+                                    <td>{{i.Description}}</td>
+                                    <td>{{i.Start_Date}}</td>
+                                    <td>{{i.End_Date}}</td>
+                                    <td>
+                                        <button class="btn btn-danger">Pending</button>
+                                    </td>
+                                    
+                                </tr>
+                                {% endfor %}
+                                {% for i in d1 %}
+                                <tr>
+                                    <td>{{i.Emp_id.Emp_Name}}</td>
+                                    <td>{{i.Task_Name}}</td>
+                                    <td>{{i.Description}}</td>
+                                    <td>{{i.Start_Date}}</td>
+                                    <td>{{i.End_Date}}</td>
+                                    <td>
+                                        <button class="btn btn-success">Completed</button>
+                                    </td>
+                                </tr>
+                                {% endfor %} 
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+
+
+  {% endblock main_content %}
+
+  {% comment %} Custom JS to Identify the Reply and Post Reply {% endcomment %}
+
+  {% block custom_js %}
+  $(document).ready(function() {
+    $("#show_completed").click(function() {
+        $(".Pending").hide();
+        $(".Completed").show();
+    });
+});
+  {% endblock custom_js %}

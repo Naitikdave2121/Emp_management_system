@@ -1,0 +1,85 @@
+{% extends 'Employee_template/base_template.html' %}
+
+{% block page_title %}
+View Task
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">View Task</h3>
+                    </div>
+                    <!-- /.card-header -->
+
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+                    <form method="POST" action="{% url 'leave-app-emp' %}">
+                        {% csrf_token %}
+                        <div class="card-body">
+                           
+
+                            <div class="form-group">
+                                <label>Emp_Name</label>
+                                <input type="text" class="form-control" rows="6" placeholder="Employee_Name" value={{a2.Emp_id.Emp_Name}}></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Task_Name</label>
+                                <input type="text" name="tsname" class="form-control" value={{a2.Task_Name}} />
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" name="desc" class="form-control" value={{a2.Description}}/>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                        <a href="{% url 'complete-task' a2.id %}" class="btn btn-primary">Completed</button></a>
+                        <button type="submit" class="btn btn-danger">Pending</button>
+                        </div>
+
+                    </form>
+
+                    </div>
+                    <!-- /.card -->
+
+
+
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+

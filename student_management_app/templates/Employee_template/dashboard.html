@@ -1,0 +1,49 @@
+{% extends 'Employee_template/base_template.html' %}
+
+{% block page_title %}
+    Update Profile
+{% endblock page_title %}
+
+{% block main_content %}
+    {% load static %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card shadow" style="width: 200px; height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">Total Employee</h5>
+            <p class="card-text">{{t}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow" style="width: 200px; height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">Total Task</h5>
+            <p class="card-text">{{t_task}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow" style="width: 200px; height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">Box 3</h5>
+            <p class="card-text">This is the third shadow box.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow" style="width: 200px; height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">Box 4</h5>
+            <p class="card-text">This is the fourth shadow box.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

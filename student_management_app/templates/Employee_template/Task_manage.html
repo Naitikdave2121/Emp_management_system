@@ -1,0 +1,67 @@
+{% extends 'Employee_template/base_template.html' %}
+
+{% block page_title %}
+    Pending Task
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Pending Task</h3>
+                    </div>
+                    <!-- /.card-header -->
+
+                    <div class="table-responsive">
+                        <table class="table" border="1px">
+                            <thead>
+                            <tr>
+                                <th>Employee Name</th>
+                                <th>Task_Name</th>
+                                <th>Description</th>
+                                <th>StartDate</th>
+                                <th>EndDate</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for i in d %}
+                            <tr>
+                                <td>{{i.Emp_id.Emp_Name}} Dave</td>
+                                <td>{{i.Task_Name}}</td>
+                                <td>{{i.Description}}</td>
+                                <td>{{i.Start_Date}}</td>
+                                <td>{{i.End_Date}}</td>
+                                <td>
+                                        <a href="{% url 'ViewTask' i.id %}" class="btn btn-success">View_Task   </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                
+                </div>
+                <!-- /.card -->
+
+            </div>
+        </div>
+
+    </div><!-- /.container-fluid -->
+  </section>
+
+  {% endblock main_content %}
+
+{% block custom_js %}
+
+{% endblock custom_js %}

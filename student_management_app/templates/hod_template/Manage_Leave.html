@@ -1,0 +1,76 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block page_title %}
+    Leave Apply by Staffs
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Leave Apply by Staffs</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="table-responsive">
+                            <table class="table" border="1px" id="attendance-table">
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Reason</th>
+                                    <th>StartDate</th>
+                                    <th>EndDate</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for i in re %}
+                                <tr>
+                                 
+                                    <td>{{i.Emp_id.Emp_Name}} Dave</td>
+                                    <td>{{i.Reason}}</td>
+                                    <td>{{i.Start_Date}}</td>
+                                    <td>{{i.End_Date}}</td>
+                                    <td>{{i.status}}</td>
+                                    
+                                    <td>
+                                            <a href="{% url 'view_l' i.id %}"><i class="nav-icon fas fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+
+
+  {% endblock main_content %}
+
+  {% comment %} Custom JS to Identify the Reply and Post Reply {% endcomment %}
+
+  {% block custom_js %}
+  <script>
+    $(document).ready(function() {
+        $('#attendance-table').DataTable();
+    });
+</script>
+  {% endblock custom_js %}
